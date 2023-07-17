@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Minio } from 'minio-js'
 
-const MINIO_ENDPOINT = 'https://minio.provo.rancherlabs.com:31524'
 const MINIO_BUCKET_NAME = 'cypress-test-report'
 const MINIO_DIR = 'cypress/results/'
 
@@ -42,7 +41,7 @@ export default {
 
       return {
         name: folder,
-        url: `${MINIO_ENDPOINT}/${MINIO_BUCKET_NAME}/${MINIO_DIR}${folder}/index.html`
+        url: `./${MINIO_DIR}${folder}/index.html`
       }
     }
   }

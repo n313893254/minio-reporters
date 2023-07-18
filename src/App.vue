@@ -50,12 +50,14 @@ export default {
 
 <template>
   <main>
-    <ul>
-      <li v-for="r in reports" :key="r.name">
+    <a-list
+      header="Cypress Test Reports"
+    >
+      <a-list-item v-for="r in reports" :key="r.name">
         <a :href="r.url" target="_blank">
           {{ r.name }}
         </a>
-      </li>
-    </ul>
+      </a-list-item>
+    </a-list>
   </main>
 </template>

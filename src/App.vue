@@ -52,12 +52,18 @@ export default {
   <main>
     <a-list
       header="Cypress Test Reports"
+      :pagination="{
+        pageSize: 10,
+      }"
+      :data-source="reports.sort((a, b) => b.name.localeCompare(a.name))"
     >
-      <a-list-item v-for="r in reports" :key="r.name">
-        <a :href="r.url" target="_blank">
-          {{ r.name }}
-        </a>
-      </a-list-item>
+      <template #renderItem="{ item: report }">
+        <a-list-item :key="report.name">
+          <a :href="report.url" target="_blank">
+            {{ report.name }}
+          </a>
+        </a-list-item>
+      </template>
     </a-list>
   </main>
 </template>

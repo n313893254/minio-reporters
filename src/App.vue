@@ -51,12 +51,21 @@ export default {
 <template>
   <main>
     <a-list
-      header="Cypress Test Reports"
       :pagination="{
         pageSize: 10,
       }"
       :data-source="reports.sort((a, b) => b.name.localeCompare(a.name))"
     >
+      <template #header>
+        <div class="banner-graphic">
+          <div class="graphic">
+            <img src="./assets/banner.svg"/>
+          </div>
+          <h1 class="title">
+            Cypress Test Reports
+          </h1>
+        </div>
+      </template>
       <template #renderItem="{ item: report }">
         <a-list-item :key="report.name">
           <a :href="report.url" target="_blank">
@@ -67,3 +76,33 @@ export default {
     </a-list>
   </main>
 </template>
+
+<style lang="scss" scoped>
+.banner-graphic {
+    position: relative;
+}
+
+.banner-graphic .graphic {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+</style>
